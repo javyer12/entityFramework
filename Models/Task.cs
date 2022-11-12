@@ -8,10 +8,9 @@ public class Task
     // [Key]
     public Guid TaskId { get; set; }
 
-    // [ForeignKey("CategoryId")]
     public Guid CategoryId { get; set; }
-    // [Required]
-    // [MaxLength(200)]
+    // public Guid UserId { get; set; }
+
     public string Title { get; set; }
 
     public string Description { get; set; }
@@ -21,6 +20,10 @@ public class Task
     public DateTime CreationDate { get; set; }
     public DateTime DeadLine { get; set; }
     public virtual Category Category { get; set; }
+    // virtual user la ultima que use
+    // public virtual User User { get; set; }
+    // intetar con iCollection
+    // public virtual ICollection<User> User { get; set; }
 
     // [NotMapped]
     public string Resumen { get; set; }

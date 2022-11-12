@@ -29,7 +29,6 @@ namespace entity.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("character varying(250)");
 
@@ -45,6 +44,26 @@ namespace entity.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"),
+                            Name = "Pending Activities",
+                            Relevance = "40"
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"),
+                            Name = "React Activities",
+                            Relevance = "80"
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7c"),
+                            Name = "Entity Framework",
+                            Relevance = "50"
+                        });
                 });
 
             modelBuilder.Entity("entity.Models.Task", b =>
@@ -57,10 +76,12 @@ namespace entity.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(8170));
 
                     b.Property<DateTime>("DeadLine")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -80,6 +101,38 @@ namespace entity.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Task", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa71"),
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4390),
+                            Description = "We need to understand how UseContext works.",
+                            PriorityTask = 1,
+                            Title = " Use UseContext"
+                        },
+                        new
+                        {
+                            TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa72"),
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4420),
+                            Description = "To Create wonderfull interface is essential for us to inhance our skills.",
+                            PriorityTask = 0,
+                            Title = "Create Interface"
+                        },
+                        new
+                        {
+                            TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa73"),
+                            CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"),
+                            CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4430),
+                            Description = "Today we have to finish this course.",
+                            PriorityTask = 2,
+                            Title = " Finish EF Course"
+                        });
                 });
 
             modelBuilder.Entity("entity.Models.User", b =>
@@ -90,13 +143,11 @@ namespace entity.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasColumnType("text");
 
                     b.HasKey("UserId");
 

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using entity;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var builder = WebApplication.CreateBuilder(args);
 //base de datos en memorias
 // builder.Services.AddDbContext<TaskContext>(p => p.UseInMemoryDatabase("tasks db"));

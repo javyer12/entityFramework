@@ -5,13 +5,14 @@ public class User
 {
     [Key]
     public Guid UserId { get; set; }
+    // public Guid TaskId { get; set; }
+    //intentar con virtual task
+    // public virtual Task Task { get; set; }
+    //collection la ultima que use
+    // public virtual ICollection<Task> Task { get; set; }
 
-    [Required]
-    [MaxLength(200)]
     public string Name { get; set; }
 
-    [Required]
-    [MaxLength(250)]
     public string Email { get; set; }
 }
 
