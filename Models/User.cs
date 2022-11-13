@@ -11,9 +11,9 @@ public class User
     //collection la ultima que use
     // public virtual ICollection<Task> Task { get; set; }
 
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    public string Email { get; set; }
+    public string? Email { get; set; }
 }
 
 //nombre de los archivos en single

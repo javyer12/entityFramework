@@ -1,6 +1,7 @@
 namespace entity.Models;
 
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 // ctrl + shift + p cuando hay problema de Omni Sharp
 public class Category
@@ -10,13 +11,14 @@ public class Category
     public Guid CategoryId { get; set; }
     //  [Required]
     //  [MaxLength(100)] //nombres no mas de 100 catacteres
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
-    public string Relevance { get; set; }
+    public string? Relevance { get; set; }
     //esta coleccion crea la relacion con tareas
-    public virtual ICollection<Task> Task { get; set; }
+    [JsonIgnore]
+    public virtual ICollection<Task>? Task { get; set; }
 }
 
 // ICollection tiene especializado que expone los objetos asi como los arrays.
