@@ -22,6 +22,12 @@ builder.Services.AddNpgsql<TaskContext>(builder.Configuration.GetConnectionStrin
 // construccion de la app
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 //endpoints
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/entity", () => "Entity Framework!");

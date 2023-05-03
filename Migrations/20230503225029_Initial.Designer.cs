@@ -12,8 +12,8 @@ using entity;
 namespace entity.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20221112192430_NonUpdates")]
-    partial class NonUpdates
+    [Migration("20230503225029_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,7 +41,6 @@ namespace entity.Migrations
                         .HasColumnType("character varying(150)");
 
                     b.Property<string>("Relevance")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("CategoryId");
@@ -81,7 +80,7 @@ namespace entity.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(8170));
+                        .HasDefaultValue(new DateTime(2023, 5, 3, 16, 50, 29, 32, DateTimeKind.Local).AddTicks(1080));
 
                     b.Property<DateTime>("DeadLine")
                         .HasColumnType("timestamp without time zone");
@@ -111,7 +110,7 @@ namespace entity.Migrations
                             TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa71"),
                             CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"),
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4390),
+                            DeadLine = new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8960),
                             Description = "We need to understand how UseContext works.",
                             PriorityTask = 1,
                             Title = " Use UseContext"
@@ -121,7 +120,7 @@ namespace entity.Migrations
                             TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa72"),
                             CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"),
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4420),
+                            DeadLine = new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8980),
                             Description = "To Create wonderfull interface is essential for us to inhance our skills.",
                             PriorityTask = 0,
                             Title = "Create Interface"
@@ -131,30 +130,11 @@ namespace entity.Migrations
                             TaskId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa73"),
                             CategoryId = new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"),
                             CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DeadLine = new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4430),
+                            DeadLine = new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8990),
                             Description = "Today we have to finish this course.",
                             PriorityTask = 2,
                             Title = " Finish EF Course"
                         });
-                });
-
-            modelBuilder.Entity("entity.Models.User", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("entity.Models.Task", b =>

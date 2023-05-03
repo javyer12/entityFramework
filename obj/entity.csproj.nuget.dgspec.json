@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/frankier/Documents/proyectos/csharp/entity/entity.csproj": {}
+    "/Users/javyermurillo/Documents/proyectos/csharp/entityFramework/entity.csproj": {}
   },
   "projects": {
-    "/Users/frankier/Documents/proyectos/csharp/entity/entity.csproj": {
+    "/Users/javyermurillo/Documents/proyectos/csharp/entityFramework/entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/frankier/Documents/proyectos/csharp/entity/entity.csproj",
+        "projectUniqueName": "/Users/javyermurillo/Documents/proyectos/csharp/entityFramework/entity.csproj",
         "projectName": "entity",
-        "projectPath": "/Users/frankier/Documents/proyectos/csharp/entity/entity.csproj",
-        "packagesPath": "/Users/frankier/.nuget/packages/",
-        "outputPath": "/Users/frankier/Documents/proyectos/csharp/entity/obj/",
+        "projectPath": "/Users/javyermurillo/Documents/proyectos/csharp/entityFramework/entity.csproj",
+        "packagesPath": "/Users/javyermurillo/.nuget/packages/",
+        "outputPath": "/Users/javyermurillo/Documents/proyectos/csharp/entityFramework/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/frankier/.nuget/NuGet/NuGet.Config"
+          "/Users/javyermurillo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,6 +64,14 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -84,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
