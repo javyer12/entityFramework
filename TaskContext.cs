@@ -6,25 +6,12 @@ public class TaskContext : DbContext
 {
     public DbSet<Category> Categories { get; set; }
     public DbSet<Task> Tasks { get; set; }
-    public DbSet<User> Users { get; set; }
     public TaskContext(DbContextOptions<TaskContext> options) : base(options) { }
 
     //sobre escribir el metodo OnModelCreating que es el que se invoca cuando se crean las tablas,
     //cuando se sobre escribe un metodo no puede ser publico debe ser protected
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // List<User> userInit = new List<User>();
-        // userInit.Add(new User() { UserId = Guid.Parse("12411a88-eb28-4ea5-a220-85d5e2d4fa71"), Name = " Juan Riquelme", Email = " riquelme@mail.com" });
-        //cambiar los datos en los modelos usuarios y tasks, por eso hace falta l foreingkey, porque los tengo al revez
-        // modelBuilder.Entity<User>(user =>
-        // {
-        //     user.ToTable("User");
-        //     user.HasKey(p => p.UserId);
-        //     user.Property(p => p.Name).IsRequired().HasMaxLength(150);
-        //     user.Property(p => p.Email).IsRequired().HasMaxLength(250);
-        //     // user.HasData(userInit);
-        // });
-
         //crear una colleccion llamada categoria
         List<Category> categoriesInit = new List<Category>();
         categoriesInit.Add(new Category() { CategoryId = Guid.Parse("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"), Name = "Pending Activities", Relevance = "40" });
@@ -54,7 +41,6 @@ public class TaskContext : DbContext
 
             //indicar la llave foranea y relacion de ambos modelos
             task.HasOne(p => p.Category).WithMany(p => p.Task).HasForeignKey(p => p.CategoryId);
-            // task.HasOne(p => p.User).WithMany(p => p.Task).HasForeignKey(p => p.UserId);
 
             task.Property(p => p.Title).IsRequired().HasMaxLength(200);
 

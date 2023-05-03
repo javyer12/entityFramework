@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace entity.Migrations
 {
     /// <inheritdoc />
-    public partial class NonUpdates : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,24 +20,11 @@ namespace entity.Migrations
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
                     Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
-                    Relevance = table.Column<string>(type: "text", nullable: false)
+                    Relevance = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.CategoryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,7 +36,7 @@ namespace entity.Migrations
                     Title = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     PriorityTask = table.Column<int>(type: "integer", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(8170)),
+                    CreationDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2023, 5, 3, 16, 50, 29, 32, DateTimeKind.Local).AddTicks(1080)),
                     DeadLine = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
@@ -78,9 +65,9 @@ namespace entity.Migrations
                 columns: new[] { "TaskId", "CategoryId", "DeadLine", "Description", "PriorityTask", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa71"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"), new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4390), "We need to understand how UseContext works.", 1, " Use UseContext" },
-                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa72"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"), new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4420), "To Create wonderfull interface is essential for us to inhance our skills.", 0, "Create Interface" },
-                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa73"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"), new DateTime(2022, 11, 12, 13, 24, 30, 288, DateTimeKind.Local).AddTicks(4430), "Today we have to finish this course.", 2, " Finish EF Course" }
+                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa71"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"), new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8960), "We need to understand how UseContext works.", 1, " Use UseContext" },
+                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa72"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7a"), new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8980), "To Create wonderfull interface is essential for us to inhance our skills.", 0, "Create Interface" },
+                    { new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa73"), new Guid("e2411a88-eb28-4ea5-a220-85d5e2d4fa7b"), new DateTime(2023, 5, 3, 16, 50, 29, 31, DateTimeKind.Local).AddTicks(8990), "Today we have to finish this course.", 2, " Finish EF Course" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -94,9 +81,6 @@ namespace entity.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Task");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Category");
